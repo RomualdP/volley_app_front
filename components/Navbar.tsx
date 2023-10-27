@@ -1,26 +1,28 @@
 import Link from 'next/link'
 import LogoutButton from './LogoutButton'
+import { HomeIcon, CalendarIcon, PersonIcon } from '@radix-ui/react-icons'
 
 type NavbarProps = {
     user: any
 }
 export default function Navbar({ user } : NavbarProps) {
   return (
-    <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-      <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm text-foreground">
+    <nav className="fixed bottom-0 w-full flex justify-center border-t-8 border-white h-24 bg-primary">
+      <div className="w-full max-w-4xl flex justify-around items-center text-sm text-foreground">
           <Link
             href="/"
-            className="py-2 px-4 rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
+            className="no-underline items-center flex flex-col"
           >
-            Accueil
+            <HomeIcon className="w-8 h-8" />
+            <span className='text-xs my-1'>Accueil</span>
           </Link>
           <Link
             href="/event"
-            className="py-2 px-4 rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
+            className="no-underline items-center flex flex-col"
           >
-            Évènements
+            <CalendarIcon className="w-8 h-8" />
+            <span className='text-xs my-1'>Matchs</span>
           </Link>
-
           {user ? (
             <div className="flex items-center gap-4">
               <span>Hey, {user.email}!</span>
@@ -28,11 +30,12 @@ export default function Navbar({ user } : NavbarProps) {
             </div>
           ) : (
             <Link
-              href="/login"
-              className="py-2 px-4 rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
-            >
-              Login
-            </Link>
+            href="/profil"
+            className="no-underline items-center flex flex-col"
+          >
+            <PersonIcon className="w-8 h-8" />
+            <span className='text-xs my-1'>Profil</span>
+          </Link>
           )}
       </div>
     </nav>

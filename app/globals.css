@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    --background: 200 20% 98%;
-    --btn-background: 200 10% 91%;
-    --btn-background-hover: 200 10% 89%;
-    --foreground: 200 50% 3%;
+    --background: 48, 100%, 94%;
+    --nav-background: 202, 93%, 87%;
+    --btn-background: 15, 98%, 71%;
+    --btn-background-hover: 15, 98%, 71%;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -15,16 +15,71 @@
       --background: 200 50% 3%;
       --btn-background: 200 10% 9%;
       --btn-background-hover: 200 10% 12%;
-      --foreground: 200 20% 96%;
     }
   }
 }
 
-@layer base {
-  * {
-    @apply border-foreground/20;
-  }
+/* Palette de couleurs */
+:root {
+  --light-blue: #AEDFF7;
+  --off-white: #FAF3E0;
+  --bright-red: #FF4757;
+  --dark-green: #2ECC71;
+  --grey: #A4A4A4;
 }
+
+/* Typographie */
+/* Roboto */
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/roboto/Roboto-Regular.ttf') format('truetype');
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/roboto/Roboto-Bold.ttf') format('truetype');
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/roboto/Roboto-Black.ttf') format('truetype');
+  font-weight: 900; /* Black */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/roboto/Roboto-Thin.ttf') format('truetype');
+  font-weight: 100; /* Thin */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/roboto/Roboto-Light.ttf') format('truetype');
+  font-weight: 300; /* Light */
+  font-style: normal;
+}
+/* Anime */
+@font-face {
+  font-family: 'Anime Ace';
+  src: url('/fonts/anime/animeace2_reg.ttf') format('truetype');
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Anime Ace';
+  src: url('/fonts/anime/animeace2_bld.ttf') format('truetype');
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+
+/* Animations */
 
 .animate-in {
   animation: animateIn 0.3s ease 0.15s both;
@@ -39,4 +94,8 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+body {
+ box-sizing: border-box;
 }

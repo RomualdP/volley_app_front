@@ -4,12 +4,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        btn: {
-          background: 'hsl(var(--btn-background))',
-          'background-hover': 'hsl(var(--btn-background-hover))',
-        },
+        background: "#FAF3E0",
+        primary: '#AEDFF7',
+        secondary: '#FF4757',
+        accent: '##2ECC71',
+        grey: "#A4A4A4",
+        error: '#f44336',
+        warning: '#ffeb3b',
+        info: '#2196f3',
+        success: '#4caf50',
+      },
+      fontFamily: {
+        'roboto': ['Roboto', 'sans-serif'],
+        'anime-ace': ['Anime Ace', 'cursive'],
       },
     },
   },

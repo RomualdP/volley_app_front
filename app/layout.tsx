@@ -2,6 +2,7 @@ import './globals.css'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import Navbar from '../components/Navbar'
+import Header from '@/components/Header'
 
 export const metadata = {
   title: 'Create Next App',
@@ -22,6 +23,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Header />
         <Navbar user={user} />
         <main className="min-h-screen bg-background flex flex-col items-center">
           {children}
