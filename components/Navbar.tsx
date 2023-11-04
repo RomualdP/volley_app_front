@@ -24,15 +24,18 @@ export default function Navbar({ user } : NavbarProps) {
             <span className='text-xs my-1'>Matchs</span>
           </Link>
           {user ? (
-            <div className="flex items-center gap-4">
-              <span>Hey, {user.email}!</span>
-              <LogoutButton />
-            </div>
+                <Link
+                href="/profil"
+                className="no-underline items-center flex flex-col"
+                >
+                <PersonIcon className="w-8 h-8" />
+                <span className='text-xs my-1'>Profil</span>
+              </Link>
           ) : (
             <Link
             href="/profil"
             className="no-underline items-center flex flex-col"
-          >
+            >
             <PersonIcon className="w-8 h-8" />
             <span className='text-xs my-1'>Profil</span>
           </Link>

@@ -1,5 +1,5 @@
 
-export default function page() {
+export default function page({params : id} : {params : {id : string}}) {
   return (
     <div>
         <h2>Edition match</h2>

@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic'
 
 
 export default async function Index() {
- 
+
   return (
     <div className="w-full max-w-4xl flex flex-col items-center p-4 text-sm text-foreground my-24 gap-4">
         <Card>

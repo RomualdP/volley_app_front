@@ -2,8 +2,11 @@
 import React from 'react'
 import { usePathname } from 'next/navigation'
 import VolleyAppLogo from '@/components/logos/VolleyAppLogo'
+import LogoutButton from './LogoutButton'
+import LoginButton from './LoginButton'
 
-function Header() {
+
+function Header({ user } : { user: any }) {
     const pathname = usePathname()
     let title
     switch (pathname) {
@@ -13,6 +16,9 @@ function Header() {
         case '/event':
             title = 'Matchs'
             break;
+        case '/login':
+        title = 'Connection'
+        break;
         default:
             title = 'Accueil'
     }
@@ -21,7 +27,8 @@ function Header() {
     <div className='fixed top-0 bg-primary w-full justify-between flex h-24 border-b-8 border-white items-center px-4'>
         <VolleyAppLogo />
         <h1 className='font-anime-ace text-xl font-bold'>{title}</h1>
-        <div>logout</div>
+        <div>{user ?  <LogoutButton /> : <LoginButton />}
+        </div>
     </div>
   )
 }
