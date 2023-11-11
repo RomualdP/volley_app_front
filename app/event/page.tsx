@@ -6,9 +6,28 @@ import addIcon from '@/components/logos/addIcon'
 import Link from 'next/link'
 import { ChevronRightIcon } from '@radix-ui/react-icons'
 
+interface Event {
+  id: number;
+  name: string;
+  location: string;
+  event_date: Date;
+}
+// TODO: ranger les types au bon endroit
+
 export default async function page() {
   const supabase = createServerComponentClient({ cookies })
   const { data: events } = await supabase.from('events').select()
+
+  const sortEventsByDate = (events : Event[]) => {
+    return events.sort((a, b) => {
+      const dateA = new Date(a.event_date);
+      const dateB = new Date(b.event_date);
+      return dateA.getTime() - dateB.getTime();
+    });
+  };
+
+  // Trier les événements après leur récupération
+  const sortedEvents = events ? sortEventsByDate(events) : [];
   return (
     <>
         {events ? (events.map((event) => (
@@ -16,7 +35,7 @@ export default async function page() {
               <Link href={`/event/${event.id}`} className='flex flex-row items-center'>
                 <div>
                   <p className="font-bold">{event.name}</p>
-                  <p>{event.date}</p>
+                  <p>{event.event_date}</p> 
                   <p>{event.location}</p>
                 </div>
                 <ChevronRightIcon className='w-6 h-6 ml-auto'/>
@@ -27,3 +46,5 @@ export default async function page() {
     </>
   )
 }
+
+// TODO : ajouter la gestion de la date de l'évènement
