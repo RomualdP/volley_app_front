@@ -1,8 +1,21 @@
-import Link from 'next/link'
+'use client'
 import Messages from './messages'
 import Card from '@/components/Card'
+import { useState, FormEvent } from 'react'
+import validatePassword from '@/utils/validatePassword'
 
 export default function Login() {
+  const [passwordErrors, setPasswordErrors] = useState<String[]>([]);
+
+  const handleSubmit = (event : FormEvent<HTMLFormElement>) => {
+    const password = (event.currentTarget.elements.namedItem('password') as HTMLInputElement).value;
+    const errors = validatePassword(password);
+    if (errors.length > 0) {
+      event.preventDefault(); // Arrête la soumission du formulaire
+      setPasswordErrors(errors);
+    }
+  };
+
   return (
     <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
       <Card>
@@ -10,6 +23,7 @@ export default function Login() {
           className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
           action="/auth/sign-in"
           method="post"
+          onSubmit={handleSubmit}
         >
           <label className="text-md" htmlFor="email">
             Email
@@ -30,6 +44,13 @@ export default function Login() {
             placeholder="••••••••"
             required
           />
+           {passwordErrors.length > 0 && (
+            <ul className="text-red-500">
+              {passwordErrors.map((error, index) => (
+                <li className="text-xs"key={index}>{error}</li>
+              ))}
+            </ul>
+          )}
           <button className="bg-secondary rounded px-4 py-2 text-white mb-2">
             Se connecter
           </button>
