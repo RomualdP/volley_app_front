@@ -20,6 +20,7 @@ export async function POST(request: Request) {
   })
 
   if (error) {
+    console.log("error", error.message)
     return NextResponse.redirect(
       `${requestUrl.origin}/login?error=Une erreur est survenue lors de l'inscription`,
       {

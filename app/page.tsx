@@ -1,12 +1,16 @@
 
 import Card from '@/components/Card'
-import Link from 'next/link'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 export const dynamic = 'force-dynamic'
 
 
 export default async function Index() {
-
+  const supabase = createServerComponentClient({ cookies })
+  const { data: {session }} = await supabase.auth.getSession()
+  if (!session) { redirect('/login')}
   return (
     <div className="w-full max-w-4xl flex flex-col items-center p-4 text-sm text-foreground my-24 gap-4">
         <Card>

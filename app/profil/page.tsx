@@ -2,12 +2,20 @@ import Card from '@/components/Card'
 import React from 'react'
 import Image from 'next/image'
 import photoSerge from '@/public/images/photoSerge.png'
-import { User } from '@supabase/supabase-js'
-import { getUserProfil } from '@/utils/getUserProfil'
+import { getUserProfile } from '@/utils/getUserProfil'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
+import { get } from 'http'
+import { getUserRole } from '@/utils/getUserRole'
 
-function Profil() {
-
-
+async function Profil() {
+  const supabase = createServerComponentClient({ cookies })
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  const profil = user ? await getUserProfile(user.id) : null;
+  const role = user ? await getUserRole(user.id) : null;
+  console.log('role', role)
   return (
     <div className='flex flex-col gap-4'>
         <Card>
@@ -15,10 +23,8 @@ function Profil() {
         </Card>
         <Card>
             <div className='flex flex-col gap-4'>
-                <p><b>Prénom</b> Romuald</p>
-                <p><b>Nom</b> Piquet</p>
-                <p><b>Lieu</b> 23, rue d'orgemont à Lagny</p>
-                <p><b>Spécialité</b> Apéro</p>
+                <p><b>Prénom</b> {profil?.firstname || 'Non renseigné'}</p>
+                <p><b>Nom</b> {profil?.lastname || 'Non renseigné'}</p>
             </div>
         </Card>
     </div>

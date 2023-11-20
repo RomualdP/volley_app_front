@@ -1,7 +1,6 @@
 import './globals.css'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
 import Navbar from '../components/Navbar'
 import Header from '@/components/Header'
 
@@ -17,14 +16,15 @@ export default async function RootLayout({
 }) {
   const supabase = createServerComponentClient({ cookies })
   const {
-    data: { user },
-  } = await supabase.auth.getUser()
+    data: { session},
+  } = await supabase.auth.getSession()
+
 
   return (
     <html lang="en">
       <body>
-        <Header user={user} />
-        <Navbar user={user} />
+        <Header user={session?.user} />
+        <Navbar user={session?.user} />
         <main className="min-h-screen bg-background flex flex-col items-center">
           {children}
         </main>
