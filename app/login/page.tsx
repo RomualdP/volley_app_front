@@ -26,7 +26,7 @@ export default function Login() {
           method="post"
           onSubmit={handleSubmit}
         >
-          <label className="text-md" htmlFor="email">
+          <label className="text-md font-anime-ace " htmlFor="email">
             Email
           </label>
           <input
@@ -35,7 +35,7 @@ export default function Login() {
             placeholder="you@example.com"
             required
           />
-          <label className="text-md" htmlFor="password">
+          <label className="text-md font-anime-ace " htmlFor="password">
             Mot de passe
           </label>
           <input
@@ -52,12 +52,12 @@ export default function Login() {
               ))}
             </ul>
           )}
-          <button className="bg-secondary rounded px-4 py-2 text-white mb-2">
+          <button className="bg-secondary rounded-2xl px-4 py-4 text-white mb-2 font-bold">
             Se connecter
           </button>
           <button
             formAction="/auth/sign-up"
-            className="border border-gray-400 rounded px-4 py-2 text-black mb-2"
+            className="border border-gray-400 rounded-2xl px-4 py-4 text-black mb-2 font-bold"
           >
             S'inscrire
           </button>

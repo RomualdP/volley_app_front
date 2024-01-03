@@ -5,14 +5,16 @@ import photoSerge from '@/public/images/photoSerge.png'
 import { getUserProfile } from '@/utils/getUserProfil'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-import { get } from 'http'
 import { getUserRole } from '@/utils/getUserRole'
+import { redirect } from 'next/navigation'
 
 async function Profil() {
   const supabase = createServerComponentClient({ cookies })
   const {
     data: { user },
   } = await supabase.auth.getUser()
+  console.log('user from profil', user)
+  if(!user) {redirect('/login')};
   const profil = user ? await getUserProfile(user.id) : null;
   const role = user ? await getUserRole(user.id) : null;
   console.log('role', role)
@@ -25,6 +27,7 @@ async function Profil() {
             <div className='flex flex-col gap-4'>
                 <p><b>Prénom</b> {profil?.firstname || 'Non renseigné'}</p>
                 <p><b>Nom</b> {profil?.lastname || 'Non renseigné'}</p>
+                <p><b>Role</b> {role || 'Non trouvé'}</p>
             </div>
         </Card>
     </div>

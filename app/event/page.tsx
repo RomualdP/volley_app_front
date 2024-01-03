@@ -5,6 +5,8 @@ import RoundedRightButton from '@/components/buttons/RoundedRightButton'
 import addIcon from '@/components/logos/addIcon'
 import Link from 'next/link'
 import { ChevronRightIcon } from '@radix-ui/react-icons'
+import { redirect } from 'next/navigation'
+import { getUserRole } from '@/utils/getUserRole'
 
 interface Event {
   id: number;
@@ -17,7 +19,11 @@ interface Event {
 export default async function page() {
   const supabase = createServerComponentClient({ cookies })
   const { data: events } = await supabase.from('events').select()
+  const { data: {session }} = await supabase.auth.getSession()
+  if (!session) { redirect('/login')}
 
+  const role = session.user ? await getUserRole(session.user.id) : null;
+  const isAdmin = role === 'admin';
   const sortEventsByDate = (events : Event[]) => {
     return events.sort((a, b) => {
       const dateA = new Date(a.event_date);
@@ -42,7 +48,7 @@ export default async function page() {
               </Link>
           </Card>
         ))) : (<p>No events found</p>)}
-          <RoundedRightButton path='/event/add' icon={addIcon()}/>
+        {isAdmin ?  <RoundedRightButton path='/event/add' icon={addIcon()}/> : null}
     </>
   )
 }

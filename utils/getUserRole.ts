@@ -4,7 +4,6 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 
 export async function getUserRole(id: string) {
   const supabase = createServerComponentClient({ cookies }); 
-
   try {
     const { data, error } = await supabase
       .from('user_roles')
