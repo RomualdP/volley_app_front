@@ -3,7 +3,8 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 
 
 export async function getUserProfile(id: string) {
-  const supabase = createServerComponentClient({ cookies }); // Assure-toi que 'cookies' est correctement défini
+  const cookieStore = cookies()
+  const supabase = createServerComponentClient({ cookies: () => cookieStore}); // Assure-toi que 'cookies' est correctement défini
 
   try {
     const { data, error } = await supabase

@@ -17,7 +17,8 @@ interface Event {
 // TODO: ranger les types au bon endroit
 
 export default async function page() {
-  const supabase = createServerComponentClient({ cookies })
+  const cookieStore = cookies()
+  const supabase = createServerComponentClient({ cookies: () => cookieStore});
   const { data: events } = await supabase.from('events').select()
   const { data: {session }} = await supabase.auth.getSession()
   if (!session) { redirect('/login')}

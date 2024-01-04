@@ -9,7 +9,8 @@ import { getUserRole } from '@/utils/getUserRole'
 import { redirect } from 'next/navigation'
 
 async function Profil() {
-  const supabase = createServerComponentClient({ cookies })
+  const cookieStore = cookies()
+  const supabase = createServerComponentClient({ cookies: () => cookieStore});
   const {
     data: { user },
   } = await supabase.auth.getUser()
