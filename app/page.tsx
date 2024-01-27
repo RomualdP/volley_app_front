@@ -1,5 +1,6 @@
 
 import Card from '@/components/Card'
+import { Button } from '@/components/ui/button'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
@@ -22,6 +23,7 @@ export default async function Index() {
             <h2 className='font-anime-ace text-l font-bold mb-4'>Prochain match</h2>
             <p>20/11 Lagny - Otis</p>
         </Card>
-      </div>
+        <Button variant='outline'>test</Button>
+      </div>  
   )
 }
