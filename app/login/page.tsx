@@ -2,67 +2,106 @@
 import Messages from './messages'
 import Card from '@/components/Card'
 import { useState, FormEvent } from 'react'
-import validatePassword from '@/utils/validatePassword'
-
+import validatePassword from '@/utils/validatePassword' 
+import { z } from "zod"
+import { Button } from "@/components/ui/button"
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+ 
+const formSchema = z.object({
+  email: z.string().email({
+    message: "Invalid email address.",
+  }),
+  password: z.string(),
+  // .min(8, { message: "Le mot de passe doit contenir au moins 8 caractères." })
+  // .max(100, { message: "Le mot de passe est trop long." })
+  // .regex(/[a-z]/, { message: "Le mot de passe doit contenir au moins une minuscule." })
+  // .regex(/[A-Z]/, { message: "Le mot de passe doit contenir au moins une majuscule." })
+  // .regex(/[0-9]/, { message: "Le mot de passe doit contenir au moins un chiffre." })
+  // .regex(/[^a-zA-Z0-9]/, { message: "Le mot de passe doit contenir au moins un caractère spécial." })
+})
+ 
 
 export default function Login() {
-  const [passwordErrors, setPasswordErrors] = useState<String[]>([]);
 
-  const handleSubmit = (event : FormEvent<HTMLFormElement>) => {
-    const password = (event.currentTarget.elements.namedItem('password') as HTMLInputElement).value;
-    const errors = validatePassword(password);
-    if (errors.length > 0) {
-      event.preventDefault(); // Arrête la soumission du formulaire
-      setPasswordErrors(errors);
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  })
+ 
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      const response = await fetch('/auth/sign-in', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Erreur lors de l’authentification');
+      }
+  
+      // Gérer la réponse, par exemple rediriger l'utilisateur
+    } catch (error) {
+      console.error(error);
+      // Gérer l'erreur ici
     }
   };
 
   return (
     <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
       <Card>
-        <form
-          className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
-          action="/auth/sign-in"
-          method="post"
-          onSubmit={handleSubmit}
-        >
-          <label className="text-md font-anime-ace " htmlFor="email">
-            Email
-          </label>
-          <input
-            className="rounded-md px-4 py-2 bg-inherit border mb-6"
-            name="email"
-            placeholder="you@example.com"
-            required
-          />
-          <label className="text-md font-anime-ace " htmlFor="password">
-            Mot de passe
-          </label>
-          <input
-            className="rounded-md px-4 py-2 bg-inherit border mb-6"
-            type="password"
-            name="password"
-            placeholder="••••••••"
-            required
-          />
-           {passwordErrors.length > 0 && (
-            <ul className="text-red-500">
-              {passwordErrors.map((error, index) => (
-                <li className="text-xs"key={index}>{error}</li>
-              ))}
-            </ul>
+      <Form {...form}>
+      <form 
+        onSubmit={form.handleSubmit(onSubmit)} 
+        className="space-y-8">
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="Entrez votre email" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
           )}
-          <button className="bg-secondary rounded-2xl px-4 py-4 text-white mb-2 font-bold">
-            Se connecter
-          </button>
-          <button
-            formAction="/auth/sign-up"
-            className="border border-gray-400 rounded-2xl px-4 py-4 text-black mb-2 font-bold"
-          >
-            S'inscrire
-          </button>
-          <Messages />
-        </form>
+        />
+          <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Mot de passe</FormLabel>
+              <FormControl>
+                <Input type='password' placeholder="Entrez votre mot de passe" {...field} />
+              </FormControl>
+              <FormDescription className='text-xs'>
+                Mot de passe oublié ?
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit">Se connecter</Button>
+      </form>
+    </Form>
       </Card>
     </div>
   )
