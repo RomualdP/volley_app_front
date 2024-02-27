@@ -2,7 +2,7 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import React from 'react'
-import Card from '@/components/Card'
+import Card from '@/src/components/Card'
 
 async function EventDetail({ params: { id } }: { params: { id: string }}) {
   const cookieStore = cookies()

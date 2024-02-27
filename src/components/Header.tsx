@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { usePathname } from 'next/navigation'
-import VolleyAppLogo from '@/components/logos/VolleyAppLogo'
+import VolleyAppLogo from '@/src/components/logos/VolleyAppLogo'
 import LogoutButton from './LogoutButton'
 import LoginButton from './LoginButton'
 

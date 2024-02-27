@@ -2,11 +2,11 @@ import './globals.css'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import Navbar from '../components/Navbar'
-import Header from '@/components/Header'
+import Header from '@/src/components/Header'
 
 import { Inter as FontSans } from "next/font/google"
  
-import { cn } from "../lib/utils"
+import { cn } from "../../lib/utils"
  
 export const fontSans = FontSans({
   subsets: ["latin"],

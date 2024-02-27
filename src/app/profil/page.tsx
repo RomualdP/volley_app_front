@@ -1,11 +1,11 @@
-import Card from '@/components/Card'
+import Card from '@/src/components/Card'
 import React from 'react'
 import Image from 'next/image'
 import photoSerge from '@/public/images/photoSerge.png'
-import { getUserProfile } from '@/utils/getUserProfil'
+import { getUserProfile } from '@/src/utils/getUserProfil'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-import { getUserRole } from '@/utils/getUserRole'
+import { getUserRole } from '@/src/utils/getUserRole'
 import { redirect } from 'next/navigation'
 
 async function Profil() {

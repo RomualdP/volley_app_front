@@ -1,6 +1,6 @@
 
-import Card from '@/components/Card'
-import { Button } from '@/components/ui/button'
+import Card from '@/src/components/Card'
+import { Button } from '@/src/components/ui/button'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'

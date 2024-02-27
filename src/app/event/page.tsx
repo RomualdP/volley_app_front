@@ -1,12 +1,12 @@
 import { cookies } from 'next/headers'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-import Card from '@/components/Card'
-import RoundedRightButton from '@/components/buttons/RoundedRightButton'
-import addIcon from '@/components/logos/addIcon'
+import Card from '@/src/components/Card'
+import RoundedRightButton from '@/src/components/buttons/RoundedRightButton'
+import addIcon from '@/src/components/logos/addIcon'
 import Link from 'next/link'
 import { ChevronRightIcon } from '@radix-ui/react-icons'
 import { redirect } from 'next/navigation'
-import { getUserRole } from '@/utils/getUserRole'
+import { getUserRole } from '@/src/utils/getUserRole'
 
 interface Event {
   id: number;

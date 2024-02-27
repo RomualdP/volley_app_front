@@ -1,10 +1,10 @@
 'use client'
 import Messages from './messages'
-import Card from '@/components/Card'
+import Card from '@/src/components/Card'
 import { useState, FormEvent } from 'react'
-import validatePassword from '@/utils/validatePassword' 
+import validatePassword from '@/src/utils/validatePassword' 
 import { z } from "zod"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/src/components/ui/button"
 import {
   Form,
   FormControl,
@@ -13,8 +13,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+} from "@/src/components/ui/form"
+import { Input } from "@/src/components/ui/input"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
  

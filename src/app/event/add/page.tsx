@@ -1,4 +1,4 @@
-import Card from "@/components/Card";
+import Card from "@/src/components/Card";
 import Messages from "./messages";
 
 export default function page() {

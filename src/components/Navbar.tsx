@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { HomeIcon, CalendarIcon, PersonIcon } from '@radix-ui/react-icons'
 import Image from 'next/image'
 import { User } from '@supabase/supabase-js'
-import { getUserProfile } from '@/utils/getUserProfil'
+import { getUserProfile } from '@/src/utils/getUserProfil'
 import photoSerge from '@/public/images/photoSerge.png'
 
 type NavbarProps = {
