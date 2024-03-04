@@ -1,6 +1,6 @@
-'use client'
-import React, { createContext, useContext} from 'react';
-import { User } from '@supabase/supabase-js'
+'use client';
+import React, { createContext, useContext } from 'react';
+import { User } from '@supabase/supabase-js';
 
 interface UserContextType {
   userData: User | null;

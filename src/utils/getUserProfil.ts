@@ -1,10 +1,9 @@
-import { cookies } from 'next/headers'
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-
+import { cookies } from 'next/headers';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 
 export async function getUserProfile(id: string) {
-  const cookieStore = cookies()
-  const supabase = createServerComponentClient({ cookies: () => cookieStore}); // Assure-toi que 'cookies' est correctement défini
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient({ cookies: () => cookieStore }); // Assure-toi que 'cookies' est correctement défini
 
   try {
     const { data, error } = await supabase

@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-function layout({children} : {children: React.ReactNode}) {
+function layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="w-full max-w-4xl flex flex-col items-center p-4 text-sm text-foreground my-24 gap-4">
-        {children}
+      {children}
     </div>
-  )
+  );
 }
 
-export default layout
+export default layout;

@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-function Card({children} : {children: React.ReactNode}) {
+function Card({ children }: { children: React.ReactNode }) {
   return (
-    <div className='bg-white w-full rounded-2xl shadow-custom p-4'>
-       {children}
+    <div className="bg-white w-full rounded-2xl shadow-custom p-4">
+      {children}
     </div>
-  )
+  );
 }
 
-export default Card
+export default Card;
