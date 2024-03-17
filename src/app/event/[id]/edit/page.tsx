@@ -1,14 +1,11 @@
 import React from 'react';
 
-export default function page({ params: id }: { params: { id: string } }) {
+export default function page() {
+  // TODO add action to form
   return (
     <div>
       <h2>Edition match</h2>
-      <form
-        className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
-        action="/event/create"
-        method="post"
-      >
+      <form>
         <label className="text-md" htmlFor="name">
           Nom de l&apos;évènement
         </label>

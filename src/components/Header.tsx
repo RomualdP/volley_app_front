@@ -5,8 +5,15 @@ import VolleyAppLogo from '@/src/components/logos/VolleyAppLogo';
 import LogoutButton from './LogoutButton';
 import LoginButton from './LoginButton';
 
+type User = {
+  id: string;
+  email: string;
+  role: string;
+};
+
 // TODO : définir le type de user dans un fichier de typage
-function Header({ user }: { user: any }) {
+function Header({ user }: { user: User }) {
+  console.log('user', user);
   const pathname = usePathname();
   let title;
   switch (pathname) {

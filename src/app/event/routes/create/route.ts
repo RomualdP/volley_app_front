@@ -13,7 +13,7 @@ export async function POST(request: Request) {
   const supabase = createServerActionClient({ cookies });
   console.log('supa', supabase);
 
-  const { data, error, status } = await supabase.from('events').insert({
+  const { error } = await supabase.from('events').insert({
     name,
     event_date,
     location,
