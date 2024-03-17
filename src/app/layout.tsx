@@ -8,8 +8,9 @@ import Header from '@/src/components/Header';
 import { Inter as FontSans } from 'next/font/google';
 
 import { cn } from '../../lib/utils';
+import { User } from '@supabase/supabase-js';
 
-export const fontSans = FontSans({
+const fontSans = FontSans({
   subsets: ['latin'],
   variable: '--font-sans',
 });
@@ -29,7 +30,7 @@ export default async function RootLayout({
   const {
     data: { session },
   } = await supabase.auth.getSession();
-
+  const user = session?.user as User | undefined;
   return (
     <html lang="en">
       <body
@@ -38,8 +39,8 @@ export default async function RootLayout({
           fontSans.variable
         )}
       >
-        <Header user={session?.user} />
-        <Navbar user={session?.user} />
+        <Header user={user} />
+        <Navbar user={user} />
         <main className="min-h-screen bg-background flex flex-col items-center">
           {children}
         </main>

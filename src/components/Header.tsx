@@ -4,16 +4,9 @@ import { usePathname } from 'next/navigation';
 import VolleyAppLogo from '@/src/components/logos/VolleyAppLogo';
 import LogoutButton from './LogoutButton';
 import LoginButton from './LoginButton';
+import { User } from '@supabase/supabase-js';
 
-type User = {
-  id: string;
-  email: string;
-  role: string;
-};
-
-// TODO : définir le type de user dans un fichier de typage
-function Header({ user }: { user: User }) {
-  console.log('user', user);
+function Header({ user }: { user: User | undefined }) {
   const pathname = usePathname();
   let title;
   switch (pathname) {
