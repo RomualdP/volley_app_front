@@ -5,7 +5,6 @@ import { Button } from '@/src/components/ui/button';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -14,7 +13,7 @@ import {
 import { Input } from '@/src/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { login } from './actions';
+import { signup } from '../actions';
 
 const formSchema = z.object({
   email: z.string().email({
@@ -49,12 +48,11 @@ export default function Login() {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      await login(data);
+      await signup(data);
     } catch (error) {
       console.error(error);
     }
   };
-
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -84,14 +82,11 @@ export default function Login() {
                   {...field}
                 />
               </FormControl>
-              <FormDescription className="text-xs">
-                Mot de passe oublié ?
-              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">Se connecter</Button>
+        <Button type="submit">{"S'inscrire"}</Button>
       </form>
     </Form>
   );
