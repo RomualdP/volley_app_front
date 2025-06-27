@@ -1,103 +1,225 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { useEffect } from 'react';
+import { Layout } from '../components/layout';
+import { Card, CardHeader, CardTitle, CardContent, Button } from '../components/ui';
+import { useNewsStore, useMatchesStore } from '../store';
+import { formatDate } from '../utils';
+import { ROUTES } from '../constants';
+import Link from 'next/link';
+import type { News, Match } from '../types';
+
+// Mock data for news
+const MOCK_NEWS: News[] = [
+  {
+    id: '1',
+    title: 'Nouveau tournoi d\'été 2024',
+    content: 'Nous sommes ravis d\'annoncer l\'ouverture des inscriptions pour le grand tournoi d\'été 2024. Les équipes peuvent s\'inscrire dès maintenant.',
+    excerpt: 'Inscriptions ouvertes pour le tournoi d\'été 2024',
+    author: 'Admin VolleyApp',
+    isPublished: true,
+    publishedAt: new Date('2024-03-15T10:00:00'),
+    createdAt: new Date('2024-03-15T09:00:00'),
+    updatedAt: new Date('2024-03-15T10:00:00'),
+  },
+  {
+    id: '2',
+    title: 'Mise à jour des règles de jeu',
+    content: 'Quelques ajustements ont été apportés aux règles officielles. Consultez le règlement complet sur notre site.',
+    excerpt: 'Nouvelles règles en vigueur',
+    author: 'Commission Technique',
+    isPublished: true,
+    publishedAt: new Date('2024-03-10T14:30:00'),
+    createdAt: new Date('2024-03-10T14:00:00'),
+    updatedAt: new Date('2024-03-10T14:30:00'),
+  },
+  {
+    id: '3',
+    title: 'Résultats du championnat régional',
+    content: 'Félicitations à toutes les équipes participantes ! Retrouvez tous les résultats et le classement final.',
+    excerpt: 'Résultats du championnat régional disponibles',
+    author: 'Organisation',
+    isPublished: true,
+    publishedAt: new Date('2024-03-05T18:00:00'),
+    createdAt: new Date('2024-03-05T17:30:00'),
+    updatedAt: new Date('2024-03-05T18:00:00'),
+  },
+];
+
+export default function HomePage() {
+  const { getLatestNews, setNews } = useNewsStore();
+  const { matches } = useMatchesStore();
+
+  useEffect(() => {
+    // Load mock data
+    setNews(MOCK_NEWS);
+    // Matches are already loaded from the matches page
+  }, [setNews]);
+
+  const latestNews = getLatestNews(3);
+  const nextMatch = getNextMatch(matches);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <Layout>
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50">
+        {/* Hero Section */}
+        <div className="relative py-12 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4 font-heading">
+              VolleyApp
+            </h1>
+            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+              Votre plateforme de gestion volleyball
+            </p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        {/* Main Content */}
+        <div className="py-8 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              
+              {/* Latest News */}
+              <div className="lg:col-span-2">
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-2xl font-bold text-gray-900 font-heading">
+                    Dernières actualités
+                  </h2>
+                  <Link href={ROUTES.ADMIN.NEWS}>
+                    <Button variant="outline" size="sm">
+                      Gérer les news
+                    </Button>
+                  </Link>
+                </div>
+
+                <div className="space-y-6">
+                  {latestNews.length === 0 ? (
+                    <Card>
+                      <CardContent className="text-center py-12">
+                        <p className="text-gray-500">Aucune actualité disponible</p>
+                      </CardContent>
+                    </Card>
+                  ) : (
+                    latestNews.map((news) => (
+                      <NewsCard key={news.id} news={news} />
+                    ))
+                  )}
+                </div>
+              </div>
+
+              {/* Sidebar */}
+              <div className="space-y-6">
+                {/* Next Match */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Prochain match</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    {nextMatch ? (
+                      <div className="space-y-3">
+                        <div className="text-center">
+                          <div className="flex items-center justify-center gap-2 text-sm font-medium">
+                            <span>{nextMatch.homeTeam.name}</span>
+                            <span className="text-gray-500">vs</span>
+                            <span>{nextMatch.awayTeam.name}</span>
+                          </div>
+                        </div>
+                        <div className="text-center text-sm text-gray-600">
+                          {formatDate(nextMatch.scheduledAt)}
+                        </div>
+                        {nextMatch.location && (
+                          <div className="text-center text-sm text-gray-500">
+                            📍 {nextMatch.location}
+                          </div>
+                        )}
+                        <Link href={`/matches/${nextMatch.id}`}>
+                          <Button variant="outline" size="sm" className="w-full">
+                            Voir les détails
+                          </Button>
+                        </Link>
+                      </div>
+                    ) : (
+                      <p className="text-gray-500 text-center">
+                        Aucun match programmé
+                      </p>
+                    )}
+                  </CardContent>
+                </Card>
+
+                {/* Quick Actions */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Actions rapides</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <Link href={ROUTES.MATCHES}>
+                      <Button variant="outline" className="w-full">
+                        Voir tous les matchs
+                      </Button>
+                    </Link>
+                    <Link href={ROUTES.PROFILE}>
+                      <Button variant="outline" className="w-full">
+                        Mon profil
+                      </Button>
+                    </Link>
+                    <Link href={ROUTES.ADMIN.BASE}>
+                      <Button variant="outline" className="w-full">
+                        Administration
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Layout>
   );
+}
+
+interface NewsCardProps {
+  readonly news: News;
+}
+
+function NewsCard({ news }: NewsCardProps) {
+  return (
+    <Card className="hover:shadow-md transition-shadow">
+      <CardContent className="p-6">
+        <div className="flex justify-between items-start mb-3">
+          <h3 className="text-lg font-semibold text-gray-900 line-clamp-2">
+            {news.title}
+          </h3>
+          <span className="text-xs text-gray-500 whitespace-nowrap ml-4">
+            {formatDate(news.publishedAt!)}
+          </span>
+        </div>
+        
+        <p className="text-gray-600 text-sm mb-3 line-clamp-3">
+          {news.excerpt || news.content}
+        </p>
+        
+        <div className="flex justify-between items-center text-xs text-gray-500">
+          <span>Par {news.author}</span>
+          <Button variant="ghost" size="sm">
+            Lire la suite
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function getNextMatch(matches: Match[]): Match | null {
+  const now = new Date();
+  const upcomingMatches = matches
+    .filter(match => 
+      match.status === 'SCHEDULED' && 
+      new Date(match.scheduledAt) > now
+    )
+    .sort((a, b) => 
+      new Date(a.scheduledAt).getTime() - new Date(b.scheduledAt).getTime()
+    );
+
+  return upcomingMatches.length > 0 ? upcomingMatches[0] : null;
 }
