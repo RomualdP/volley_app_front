@@ -323,9 +323,11 @@ function TrainingItem({
       )}
 
       <div className="flex gap-2">
-        <Button variant="outline" size="sm">
-          Voir détails
-        </Button>
+        <Link href={`/admin/trainings/${training.id}`}>
+          <Button variant="outline" size="sm">
+            Voir détails
+          </Button>
+        </Link>
         <Button
           variant="ghost"
           size="sm"
