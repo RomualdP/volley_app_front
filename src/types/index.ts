@@ -11,7 +11,7 @@ export interface User {
   readonly updatedAt: Date;
 }
 
-export type UserRole = 'USER' | 'ADMIN';
+export type UserRole = "USER" | "ADMIN";
 
 export interface UserCreateData {
   readonly email: string;
@@ -55,7 +55,7 @@ export interface TeamMember {
   readonly joinedAt: Date;
 }
 
-export type TeamRole = 'CAPTAIN' | 'COACH' | 'PLAYER' | 'SUBSTITUTE';
+export type TeamRole = "CAPTAIN" | "COACH" | "PLAYER" | "SUBSTITUTE";
 
 export interface Match {
   readonly id: string;
@@ -73,7 +73,11 @@ export interface Match {
   readonly updatedAt: Date;
 }
 
-export type MatchStatus = 'SCHEDULED' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED';
+export type MatchStatus =
+  | "SCHEDULED"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "CANCELLED";
 
 export interface Set {
   readonly id: string;
@@ -98,7 +102,11 @@ export interface Tournament {
   readonly updatedAt: Date;
 }
 
-export type TournamentStatus = 'REGISTRATION' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED';
+export type TournamentStatus =
+  | "REGISTRATION"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "CANCELLED";
 
 export interface ApiResponse<T = unknown> {
   readonly data: T;
@@ -117,7 +125,8 @@ export interface PaginatedResponse<T = unknown> {
 }
 
 // Export des types spécialisés
-export * from './match';
-export * from './skill';
-export * from './news'; 
-export * from './profile';
+export * from "./match";
+export * from "./skill";
+export * from "./news";
+export * from "./profile";
+export * from "./training";

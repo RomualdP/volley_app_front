@@ -1,9 +1,15 @@
-'use client';
+"use client";
 
-import { Layout } from '../../components/layout';
-import { Card, CardHeader, CardTitle, CardContent, Button } from '../../components/ui';
-import { ROUTES } from '../../constants';
-import Link from 'next/link';
+import { Layout } from "../../components/layout";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  Button,
+} from "../../components/ui";
+import { ROUTES } from "../../constants";
+import Link from "next/link";
 
 export default function AdminPage() {
   return (
@@ -11,20 +17,19 @@ export default function AdminPage() {
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50">
         <div className="py-8 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            
             {/* Header */}
             <div className="mb-8">
               <h1 className="text-3xl font-bold text-gray-900 font-heading">
                 Administration
               </h1>
               <p className="text-gray-600 mt-2">
-                Gérez les utilisateurs, les actualités et les paramètres de l&apos;application
+                Gérez les utilisateurs, les actualités et les paramètres de
+                l&apos;application
               </p>
             </div>
 
             {/* Admin Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              
               {/* Users Management */}
               <AdminCard
                 title="Gestion des utilisateurs"
@@ -32,8 +37,8 @@ export default function AdminPage() {
                 icon="👥"
                 href={ROUTES.ADMIN.USERS}
                 actions={[
-                  { label: 'Rechercher des utilisateurs', primary: true },
-                  { label: 'Voir tous les utilisateurs', primary: false },
+                  { label: "Rechercher des utilisateurs", primary: true },
+                  { label: "Voir tous les utilisateurs", primary: false },
                 ]}
               />
 
@@ -44,8 +49,20 @@ export default function AdminPage() {
                 icon="📰"
                 href={ROUTES.ADMIN.NEWS}
                 actions={[
-                  { label: 'Ajouter une actualité', primary: true },
-                  { label: 'Modifier les actualités', primary: false },
+                  { label: "Ajouter une actualité", primary: true },
+                  { label: "Modifier les actualités", primary: false },
+                ]}
+              />
+
+              {/* Trainings Management */}
+              <AdminCard
+                title="Gestion des entraînements"
+                description="Créer et gérer les sessions d'entraînement"
+                icon="🏋️"
+                href="/admin/trainings"
+                actions={[
+                  { label: "Créer un entraînement", primary: true },
+                  { label: "Voir tous les entraînements", primary: false },
                 ]}
               />
 
@@ -68,7 +85,6 @@ export default function AdminPage() {
                   </div>
                 </CardContent>
               </Card>
-
             </div>
 
             {/* Recent Activity */}
@@ -98,7 +114,6 @@ export default function AdminPage() {
                 </CardContent>
               </Card>
             </div>
-
           </div>
         </div>
       </div>
@@ -119,7 +134,13 @@ interface AdminAction {
   readonly primary: boolean;
 }
 
-function AdminCard({ title, description, icon, href, actions }: AdminCardProps) {
+function AdminCard({
+  title,
+  description,
+  icon,
+  href,
+  actions,
+}: AdminCardProps) {
   return (
     <Card className="hover:shadow-lg transition-shadow">
       <CardHeader>
@@ -129,15 +150,13 @@ function AdminCard({ title, description, icon, href, actions }: AdminCardProps) 
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="text-gray-600 text-sm">
-          {description}
-        </p>
+        <p className="text-gray-600 text-sm">{description}</p>
         <div className="flex flex-col space-y-2">
           {actions.map((action, index) => (
             <Link key={index} href={href}>
-              <Button 
-                variant={action.primary ? 'primary' : 'outline'} 
-                size="sm" 
+              <Button
+                variant={action.primary ? "primary" : "outline"}
+                size="sm"
                 className="w-full"
               >
                 {action.label}
@@ -165,7 +184,7 @@ function StatsItem({ label, value }: StatsItemProps) {
 }
 
 interface ActivityItemProps {
-  readonly type: 'user' | 'news' | 'match';
+  readonly type: "user" | "news" | "match";
   readonly description: string;
   readonly time: string;
 }
@@ -173,10 +192,14 @@ interface ActivityItemProps {
 function ActivityItem({ type, description, time }: ActivityItemProps) {
   const getIcon = () => {
     switch (type) {
-      case 'user': return '👤';
-      case 'news': return '📰';
-      case 'match': return '🏐';
-      default: return '📋';
+      case "user":
+        return "👤";
+      case "news":
+        return "📰";
+      case "match":
+        return "🏐";
+      default:
+        return "📋";
     }
   };
 
@@ -189,4 +212,4 @@ function ActivityItem({ type, description, time }: ActivityItemProps) {
       </div>
     </div>
   );
-} 
+}

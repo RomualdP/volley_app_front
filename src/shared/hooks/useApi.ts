@@ -55,6 +55,15 @@ export const useApi = <T = unknown>(options: UseApiOptions = {}) => {
           throw new Error(errorMessage);
         }
 
+        if (response.status === 204) {
+          setState({
+            data: null,
+            isLoading: false,
+            error: null,
+          });
+          return null;
+        }
+
         const result: ApiResponse<T> = await response.json();
 
         if (!result.success) {
