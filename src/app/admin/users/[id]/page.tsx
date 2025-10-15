@@ -122,7 +122,7 @@ export default function UserDetailPage() {
           console.error("Failed to fetch user:", error);
         });
     }
-  }, [userId]);
+  }, [userId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Load user skills when userId changes
   useEffect(() => {

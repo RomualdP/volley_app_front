@@ -11,9 +11,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const { checkAuthStatus } = useAuthApi();
 
   useEffect(() => {
-    // Vérifier le statut d'authentification au chargement de l'app
     checkAuthStatus();
-  }, []);
+  });
 
   return <>{children}</>;
 }; 

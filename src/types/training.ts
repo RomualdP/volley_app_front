@@ -43,6 +43,13 @@ export interface TrainingRegistration {
   readonly status: RegistrationStatus;
   readonly registeredAt: Date;
   readonly cancelledAt: Date | null;
+  readonly user: {
+    readonly id: string;
+    readonly firstName: string;
+    readonly lastName: string;
+    readonly email: string;
+    readonly avatar: string | null;
+  };
 }
 
 export type RegistrationStatus =
