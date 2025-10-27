@@ -5,7 +5,7 @@
  * Pure presentation component - receives all data via props
  */
 
-import { Input } from "../../../../components/forms";
+import { Input } from "@/components/ui";
 
 export interface ClubInfoStepProps {
   readonly name: string;

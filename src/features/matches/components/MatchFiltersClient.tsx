@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTransition } from "react";
 import { Card, CardContent, Button } from "@/components/ui";
-import { Input, Select } from "@/components/forms";
+import { Input, Select } from "@/components/ui";
 import { MATCH_STATUS_OPTIONS } from "../utils/match-status";
 
 /**

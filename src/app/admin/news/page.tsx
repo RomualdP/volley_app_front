@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Card, CardHeader, CardTitle, CardContent, Button } from '../../../components/ui';
-import { Input } from '../../../components/forms';
+import { Input } from '@/components/ui';
 import { useNewsApi } from '../../../features/news/hooks/useNewsApi';
 import { formatDate } from '../../../utils';
 import Link from 'next/link';

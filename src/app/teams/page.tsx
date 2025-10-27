@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Button } from "@/shared/components";
+import { Button } from "@/components/ui";
 import { TeamsListServer } from "@/features/teams/components/server/TeamsListServer";
 import { TeamsListSkeleton } from "@/features/teams/components/TeamsListSkeleton";
 

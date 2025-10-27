@@ -1,6 +1,6 @@
 import { serverFetch } from "@/lib/server-fetch";
 import { REVALIDATE_MEDIUM } from "@/lib/cache-config";
-import type { Match } from "@/shared/types";
+import type { Match } from "@/types";
 
 /**
  * Server-side API for Matches

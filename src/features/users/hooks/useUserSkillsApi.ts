@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useApi } from '../../../shared/hooks/useApi';
+import { useApi } from '@/hooks/useApi';
 import { useUserSkillsStore } from '../../../store';
 import type { UserSkill, UserSkillCreateData, UserSkillUpdateData } from '../../../types';
 

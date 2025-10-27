@@ -15,7 +15,7 @@ import {
   CardContent,
   Button,
 } from "../../../../components/ui";
-import { Select } from "../../../../components/forms/Select";
+import { Select } from "@/components/ui";
 import { CopyLinkButton } from "./CopyLinkButton";
 import { useInvitation } from "../../hooks";
 import type { InvitationType } from "../../types";

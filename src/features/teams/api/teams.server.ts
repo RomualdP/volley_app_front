@@ -1,6 +1,6 @@
 import { serverFetch } from "@/lib/server-fetch";
 import { REVALIDATE_MEDIUM } from "@/lib/cache-config";
-import type { Team } from "@/shared/types";
+import type { Team } from "@/types";
 
 /**
  * Server-side API for Teams

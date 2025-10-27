@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { Card, CardContent, CardHeader, CardTitle } from '../../../shared/components';
-import { formatDate, getTeamRoleText } from '../../../shared/utils';
-import type { Team } from '../../../shared/types';
+import Image from "next/image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
+import { formatDate, getTeamRoleText } from "@/utils";
+import type { Team } from "@/types";
 
 interface TeamCardProps {
   readonly team: Team;
@@ -18,12 +18,12 @@ export const TeamCard = ({ team, onSelect }: TeamCardProps) => {
   };
 
   const membersCount = team.members.length;
-  const captains = team.members.filter(member => member.role === 'CAPTAIN');
-  
+  const captains = team.members.filter((member) => member.role === "CAPTAIN");
+
   return (
-    <Card 
+    <Card
       className={`cursor-pointer transition-all duration-200 ${
-        onSelect ? 'hover:shadow-lg hover:scale-105' : ''
+        onSelect ? "hover:shadow-lg hover:scale-105" : ""
       }`}
       onClick={handleClick}
     >
@@ -56,20 +56,18 @@ export const TeamCard = ({ team, onSelect }: TeamCardProps) => {
           </div>
         </div>
       </CardHeader>
-      
+
       <CardContent>
         {team.description && (
-          <p className="text-neutral-600 mb-4">
-            {team.description}
-          </p>
+          <p className="text-neutral-600 mb-4">{team.description}</p>
         )}
-        
+
         <div className="space-y-2">
           <div className="flex justify-between items-center">
             <span className="text-sm text-neutral-500">Membres:</span>
             <span className="font-medium">{membersCount}</span>
           </div>
-          
+
           {captains.length > 0 && (
             <div className="flex justify-between items-center">
               <span className="text-sm text-neutral-500">Capitaine(s):</span>
@@ -77,19 +75,19 @@ export const TeamCard = ({ team, onSelect }: TeamCardProps) => {
                 {captains.map((captain, index) => (
                   <div key={captain.id} className="text-sm font-medium">
                     {captain.user.firstName} {captain.user.lastName}
-                    {index < captains.length - 1 && ', '}
+                    {index < captains.length - 1 && ", "}
                   </div>
                 ))}
               </div>
             </div>
           )}
-          
+
           <div className="flex justify-between items-center">
             <span className="text-sm text-neutral-500">Créée le:</span>
             <span className="text-sm">{formatDate(team.createdAt)}</span>
           </div>
         </div>
-        
+
         <div className="mt-4 pt-4 border-t border-neutral-200">
           <div className="flex flex-wrap gap-1">
             {team.members.slice(0, 3).map((member) => (
@@ -112,4 +110,4 @@ export const TeamCard = ({ team, onSelect }: TeamCardProps) => {
   );
 };
 
-TeamCard.displayName = 'TeamCard'; 
+TeamCard.displayName = "TeamCard";

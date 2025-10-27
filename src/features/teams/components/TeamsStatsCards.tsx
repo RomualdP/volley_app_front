@@ -1,4 +1,4 @@
-import type { Team } from "@/shared/types";
+import type { Team } from "@/types";
 
 /**
  * TeamsStatsCards - Dumb Component

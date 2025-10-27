@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "@/shared/components";
+import { Button } from "@/components/ui";
 import type { User } from "@/types";
 
 /**

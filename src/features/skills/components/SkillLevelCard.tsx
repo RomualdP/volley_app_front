@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import type { VolleyballSkill } from '../../types';
-import { SKILL_LEVEL_OPTIONS } from '../../constants/skills';
-import { VOLLEYBALL_SKILL_DEFINITIONS } from '../../constants/volleyball-skills';
+import type { VolleyballSkill } from "@/types/skill";
+import { SKILL_LEVEL_OPTIONS } from "@/constants/skills";
+import { VOLLEYBALL_SKILL_DEFINITIONS } from "@/constants/volleyball-skills";
 
 interface SkillLevelCardProps {
   readonly skill: VolleyballSkill;
@@ -31,9 +31,13 @@ export function SkillLevelCard({
     <div className="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow w-full">
       <div className="flex justify-between items-start mb-2">
         <div className="flex-1">
-          <p className="font-medium text-gray-900">{VOLLEYBALL_SKILL_DEFINITIONS[skill].name}</p>
+          <p className="font-medium text-gray-900">
+            {VOLLEYBALL_SKILL_DEFINITIONS[skill].name}
+          </p>
           {VOLLEYBALL_SKILL_DEFINITIONS[skill].description && (
-            <p className="text-xs text-gray-500 mt-1">{VOLLEYBALL_SKILL_DEFINITIONS[skill].description}</p>
+            <p className="text-xs text-gray-500 mt-1">
+              {VOLLEYBALL_SKILL_DEFINITIONS[skill].description}
+            </p>
           )}
         </div>
         <div className="flex items-center gap-2">
@@ -59,8 +63,12 @@ export function SkillLevelCard({
             </div>
           ) : (
             <div className="flex items-center gap-2">
-              <span className={`px-2 py-1 rounded-full text-xs font-medium ${getRatingColor(currentLevel)}`}>
-                {currentLevel === 0 ? 'Non évalué' : getRatingLabel(currentLevel)}
+              <span
+                className={`px-2 py-1 rounded-full text-xs font-medium ${getRatingColor(currentLevel)}`}
+              >
+                {currentLevel === 0
+                  ? "Non évalué"
+                  : getRatingLabel(currentLevel)}
               </span>
               <button
                 onClick={onEdit}

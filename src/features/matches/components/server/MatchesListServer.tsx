@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui";
 import { getMatches } from "@/features/matches/api/matches.server";
 import { MatchCard } from "../MatchCard";
-import type { MatchStatus } from "@/shared/types";
+import type { MatchStatus } from "@/types";
 
 /**
  * MatchesListServer - Server Component

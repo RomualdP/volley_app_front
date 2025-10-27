@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
-import { useApi } from '../../../shared/hooks/useApi';
-import { useTeamsStore } from '../../../shared/store';
-import type { Team } from '../../../shared/types';
+import { useApi } from '@/hooks/useApi';
+import { useTeamsStore } from '@/store';
+import type { Team } from '@/types';
 
 export const useTeamsApi = () => {
   const teamsApi = useApi<Team[]>();

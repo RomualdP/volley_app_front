@@ -1,6 +1,11 @@
 import { Suspense } from "react";
-import { Button } from "@/shared/components";
-import { PlayersStatsGrid, PlayersStatsGridSkeleton, PlayersListServer, PlayersListSkeleton } from "@/features/players";
+import { Button } from "@/components/ui";
+import {
+  PlayersStatsGrid,
+  PlayersStatsGridSkeleton,
+  PlayersListServer,
+  PlayersListSkeleton,
+} from "@/features/players";
 
 /**
  * PlayersPage - Server Component

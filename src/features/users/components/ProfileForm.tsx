@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui";
 import { Input, Button } from "@/components";
-import { Select } from "@/components/forms/Select";
+import { Select } from "@/components/ui";
 import { useUserProfileApi } from "../hooks/useUserProfileApi";
 import type { Gender, User } from "@/types";
 

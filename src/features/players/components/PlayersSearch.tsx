@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Input } from "@/components/forms";
-import { Button } from "@/shared/components";
+import { Input } from "@/components/ui";
+import { Button } from "@/components/ui";
 import type { User } from "@/types";
 import { PlayerCard } from "./PlayerCard";
 

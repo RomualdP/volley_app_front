@@ -8,7 +8,7 @@ import {
   CardContent,
   Button,
 } from "../../../components/ui";
-import { Input } from "../../../components/forms";
+import { Input } from "../../../components/ui";
 import { useUsersApi } from "../../../features/users/hooks/useUsersApi";
 import { formatDate } from "../../../utils";
 import Link from "next/link";
@@ -49,121 +49,119 @@ export default function AdminUsersPage() {
   };
 
   return (
-    
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50">
-        <div className="py-8 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            {/* Header */}
-            <div className="mb-8">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h1 className="text-3xl font-bold text-gray-900 font-heading">
-                    Gestion des utilisateurs
-                  </h1>
-                  <p className="text-gray-600 mt-2">
-                    Recherchez et gérez les comptes utilisateurs
-                  </p>
-                </div>
-                <Link href="/admin">
-                  <Button variant="outline">Retour à l&apos;admin</Button>
-                </Link>
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50">
+      <div className="py-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="mb-8">
+            <div className="flex items-center justify-between">
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900 font-heading">
+                  Gestion des utilisateurs
+                </h1>
+                <p className="text-gray-600 mt-2">
+                  Recherchez et gérez les comptes utilisateurs
+                </p>
               </div>
+              <Link href="/admin">
+                <Button variant="outline">Retour à l&apos;admin</Button>
+              </Link>
             </div>
-
-            {/* Search Section */}
-            <Card className="mb-8">
-              <CardHeader>
-                <CardTitle>Rechercher des utilisateurs</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex gap-4">
-                  <div className="flex-1">
-                    <Input
-                      id="search-users"
-                      name="search"
-                      type="text"
-                      label="Recherche"
-                      placeholder="Rechercher par nom ou email..."
-                      value={searchTerm}
-                      onChange={handleSearchChange}
-                    />
-                  </div>
-                  <Button variant="outline" onClick={() => setSearchTerm("")}>
-                    Effacer
-                  </Button>
-                </div>
-                {searchTerm && (
-                  <p className="text-sm text-gray-600 mt-2">
-                    {filteredUsers.length} résultat(s) trouvé(s) pour &quot;
-                    {searchTerm}&quot;
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-
-            {/* Users Table */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Utilisateurs ({filteredUsers.length})</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {isLoading ? (
-                  <div className="text-center py-8">
-                    <p className="text-gray-500">
-                      Chargement des utilisateurs...
-                    </p>
-                  </div>
-                ) : filteredUsers.length === 0 ? (
-                  <div className="text-center py-8">
-                    <p className="text-gray-500">
-                      {searchTerm
-                        ? "Aucun utilisateur trouvé"
-                        : "Aucun utilisateur"}
-                    </p>
-                  </div>
-                ) : (
-                  <div className="overflow-x-auto">
-                    <table className="min-w-full divide-y divide-gray-200">
-                      <thead className="bg-gray-50">
-                        <tr>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Utilisateur
-                          </th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Email
-                          </th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Rôle
-                          </th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Statut
-                          </th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Dernière connexion
-                          </th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Actions
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody className="bg-white divide-y divide-gray-200">
-                        {filteredUsers.map((user) => (
-                          <UserRow
-                            key={user.id}
-                            user={user}
-                            onToggleStatus={() => toggleUserStatus(user.id)}
-                          />
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
           </div>
+
+          {/* Search Section */}
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle>Rechercher des utilisateurs</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex gap-4">
+                <div className="flex-1">
+                  <Input
+                    id="search-users"
+                    name="search"
+                    type="text"
+                    label="Recherche"
+                    placeholder="Rechercher par nom ou email..."
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                  />
+                </div>
+                <Button variant="outline" onClick={() => setSearchTerm("")}>
+                  Effacer
+                </Button>
+              </div>
+              {searchTerm && (
+                <p className="text-sm text-gray-600 mt-2">
+                  {filteredUsers.length} résultat(s) trouvé(s) pour &quot;
+                  {searchTerm}&quot;
+                </p>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Users Table */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Utilisateurs ({filteredUsers.length})</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {isLoading ? (
+                <div className="text-center py-8">
+                  <p className="text-gray-500">
+                    Chargement des utilisateurs...
+                  </p>
+                </div>
+              ) : filteredUsers.length === 0 ? (
+                <div className="text-center py-8">
+                  <p className="text-gray-500">
+                    {searchTerm
+                      ? "Aucun utilisateur trouvé"
+                      : "Aucun utilisateur"}
+                  </p>
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Utilisateur
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Email
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Rôle
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Statut
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Dernière connexion
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Actions
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {filteredUsers.map((user) => (
+                        <UserRow
+                          key={user.id}
+                          user={user}
+                          onToggleStatus={() => toggleUserStatus(user.id)}
+                        />
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </CardContent>
+          </Card>
         </div>
       </div>
-    
+    </div>
   );
 }
 

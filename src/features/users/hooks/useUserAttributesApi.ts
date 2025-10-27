@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { useApi } from "../../../shared/hooks/useApi";
+import { useApi } from "@/hooks/useApi";
 
 export interface UserAttribute {
   id: string;

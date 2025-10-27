@@ -1,6 +1,6 @@
-import { Button } from "@/shared/components";
+import { Button } from "@/components/ui";
 import { TeamCard } from "./TeamCard";
-import type { Team } from "@/shared/types";
+import type { Team } from "@/types";
 
 /**
  * TeamsGrid - Dumb Component

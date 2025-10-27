@@ -114,6 +114,17 @@ export const useApi = <T = unknown>(options: UseApiOptions = {}) => {
     [request],
   );
 
+  const patch = useCallback(
+    (endpoint: string, data?: unknown, options: RequestInit = {}) => {
+      return request(endpoint, {
+        ...options,
+        method: "PATCH",
+        body: data ? JSON.stringify(data) : undefined,
+      });
+    },
+    [request],
+  );
+
   const deleteRequest = useCallback(
     (endpoint: string, options: RequestInit = {}) => {
       return request(endpoint, { ...options, method: "DELETE" });
@@ -133,6 +144,7 @@ export const useApi = <T = unknown>(options: UseApiOptions = {}) => {
     get,
     post,
     put,
+    patch,
     delete: deleteRequest,
     clearError,
   };

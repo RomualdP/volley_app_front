@@ -3,7 +3,7 @@ import { getUpcomingMatches } from "@/features/matches/api/matches.server";
 import { ROUTES } from "@/constants";
 import { DashboardCard } from "../DashboardCard";
 import { formatDate } from "@/utils";
-import type { Match } from "@/shared/types";
+import type { Match } from "@/types";
 
 /**
  * MatchesWidgetServer - Server Component

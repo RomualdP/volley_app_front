@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useApi } from '../../../shared/hooks/useApi';
+import { useApi } from '@/hooks/useApi';
 import { useMatchesStore } from '../../../store';
 import type { Match } from '../../../types';
 
