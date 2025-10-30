@@ -54,7 +54,7 @@ export function getNavLinks(clubRole: ClubRole | null): NavLink[] {
       href: ROUTES.PLAYERS,
       label: "Mes joueurs",
       icon: IconPlayVolleyball,
-      roles: ["OWNER"],
+      roles: ["OWNER", "COACH"],
     },
     {
       href: ROUTES.MATCHES,

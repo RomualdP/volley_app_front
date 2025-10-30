@@ -265,7 +265,7 @@ export function AppHeader() {
           <button
             onClick={handleLogout}
             disabled={isLoading}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-neutral-700 hover:text-orange-600 hover:bg-neutral-100 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full flex items-center justify-left gap-2 px-4 py-2 text-sm font-medium text-neutral-700 hover:text-orange-600 hover:bg-neutral-100 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <IconLogout size={18} stroke={2} />
             <span>{isLoading ? "Déconnexion..." : "Déconnexion"}</span>
