@@ -6,8 +6,9 @@ import type { ReactNode } from "react";
 /**
  * MainWrapper Component
  *
- * Wrapper pour le <main> qui applique conditionnellement le padding-left
- * pour compenser la sidebar uniquement sur les pages qui en ont besoin
+ * Wrapper pour le <main> qui applique conditionnellement le padding
+ * - Mobile: padding-top pour la navbar en haut
+ * - Desktop: padding-left pour la sidebar à gauche
  */
 interface MainWrapperProps {
   readonly children: ReactNode;
@@ -22,5 +23,13 @@ export function MainWrapper({ children }: MainWrapperProps) {
     pathname?.startsWith("/signup") ||
     pathname?.startsWith("/register");
 
-  return <main className={isAuthPage ? "" : "pl-64"}>{children}</main>;
+  if (isAuthPage) {
+    return <main>{children}</main>;
+  }
+
+  return (
+    <main className="pt-16 md:pt-0 md:pl-64">
+      {children}
+    </main>
+  );
 }
