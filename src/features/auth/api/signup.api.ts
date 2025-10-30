@@ -146,7 +146,7 @@ export async function validateInvitationToken(
   const data = extractData<{
     clubName: string;
     clubId: string;
-    type: "PLAYER" | "ASSISTANT_COACH";
+    type: "PLAYER" | "COACH";
     expiresAt?: string;
   }>(responseData);
 

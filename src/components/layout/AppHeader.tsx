@@ -40,8 +40,8 @@ export function AppHeader() {
     return null;
   }
 
+  const isOwner = clubRole === "OWNER";
   const isCoach = clubRole === "COACH";
-  const isAssistant = clubRole === "ASSISTANT_COACH";
 
   // Get navigation links based on role
   const navLinks = getNavLinks(clubRole);
@@ -72,9 +72,9 @@ export function AppHeader() {
       <header className="md:hidden fixed top-0 left-0 right-0 h-16 bg-surface border-b-[12px] border-border-emphasis shadow-sm flex items-center justify-between px-4 z-50">
         <Link
           href={
-            isCoach
+            isOwner
               ? ROUTES.DASHBOARD.COACH
-              : isAssistant
+              : isCoach
                 ? ROUTES.DASHBOARD.ASSISTANT
                 : ROUTES.DASHBOARD.PLAYER
           }
@@ -157,14 +157,14 @@ export function AppHeader() {
                   </p>
                   <p
                     className={`text-xs truncate ${
-                      isCoach
+                      isOwner
                         ? "text-orange-600"
-                        : isAssistant
+                        : isCoach
                           ? "text-blue-600"
                           : "text-green-600"
                     }`}
                   >
-                    {isCoach ? "Coach" : isAssistant ? "Assistant" : "Joueur"}
+                    {isOwner ? "Propriétaire" : isCoach ? "Coach" : "Joueur"}
                   </p>
                 </div>
               </Link>
@@ -190,9 +190,9 @@ export function AppHeader() {
         <div className="p-6 border-b-6 border-white">
           <Link
             href={
-              isCoach
+              isOwner
                 ? ROUTES.DASHBOARD.COACH
-                : isAssistant
+                : isCoach
                   ? ROUTES.DASHBOARD.ASSISTANT
                   : ROUTES.DASHBOARD.PLAYER
             }
@@ -250,15 +250,15 @@ export function AppHeader() {
                 {user?.firstName} {user?.lastName}
               </p>
               <p
-                className={`text-xs truncate ${
-                  isCoach
-                    ? "text-orange-600"
-                    : isAssistant
-                      ? "text-blue-600"
-                      : "text-green-600"
-                }`}
-              >
-                {isCoach ? "Coach" : isAssistant ? "Assistant" : "Joueur"}
+                  className={`text-xs truncate ${
+                    isOwner
+                      ? "text-orange-600"
+                      : isCoach
+                        ? "text-blue-600"
+                        : "text-green-600"
+                  }`}
+                >
+                  {isOwner ? "Propriétaire" : isCoach ? "Coach" : "Joueur"}
               </p>
             </div>
           </Link>

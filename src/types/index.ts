@@ -14,7 +14,7 @@ export interface User {
 }
 
 export type UserRole = "USER" | "ADMIN";
-export type ClubRole = "COACH" | "ASSISTANT_COACH" | "PLAYER" | null;
+export type ClubRole = "OWNER" | "COACH" | "PLAYER" | null;
 
 export interface UserCreateData {
   readonly email: string;

@@ -2,9 +2,9 @@
  * Page de sélection de rôle pour l'inscription
  *
  * Permet à l'utilisateur de choisir son rôle :
- * - Coach (créer un club)
+ * - Propriétaire (créer un club)
  * - Joueur (rejoindre via invitation)
- * - Assistant Coach (aider via invitation)
+ * - Coach (aider via invitation)
  */
 
 import Link from "next/link";

@@ -8,7 +8,7 @@ import {
 } from "@tabler/icons-react";
 import { ROUTES } from "../constants";
 
-export type ClubRole = "COACH" | "ASSISTANT_COACH" | "PLAYER";
+export type ClubRole = "OWNER" | "COACH" | "PLAYER";
 
 export interface NavLink {
   href: string;
@@ -24,43 +24,43 @@ export interface NavLink {
  * @returns Liste des liens de navigation
  */
 export function getNavLinks(clubRole: ClubRole | null): NavLink[] {
+  const isOwner = clubRole === "OWNER";
   const isCoach = clubRole === "COACH";
-  const isAssistant = clubRole === "ASSISTANT_COACH";
 
   return [
     {
-      href: isCoach
+      href: isOwner
         ? ROUTES.DASHBOARD.COACH
-        : isAssistant
+        : isCoach
           ? ROUTES.DASHBOARD.ASSISTANT
           : ROUTES.DASHBOARD.PLAYER,
       label: "Dashboard",
       icon: IconLayoutDashboard,
-      roles: ["COACH", "ASSISTANT_COACH", "PLAYER"],
+      roles: ["OWNER", "COACH", "PLAYER"],
     },
     {
       href: ROUTES.CLUB,
       label: "Mon club",
       icon: IconBallVolleyball,
-      roles: ["COACH", "ASSISTANT_COACH", "PLAYER"],
+      roles: ["OWNER", "COACH", "PLAYER"],
     },
     {
       href: ROUTES.TEAMS,
       label: "Mes équipes",
       icon: IconUsers,
-      roles: ["COACH", "ASSISTANT_COACH", "PLAYER"],
+      roles: ["OWNER", "COACH", "PLAYER"],
     },
     {
       href: ROUTES.PLAYERS,
       label: "Mes joueurs",
       icon: IconPlayVolleyball,
-      roles: ["COACH"],
+      roles: ["OWNER"],
     },
     {
       href: ROUTES.MATCHES,
       label: "Matchs",
       icon: IconCalendar,
-      roles: ["COACH", "ASSISTANT_COACH", "PLAYER"],
+      roles: ["OWNER", "COACH", "PLAYER"],
     },
   ];
 }

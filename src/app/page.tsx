@@ -21,9 +21,9 @@ export default function HomePage() {
       return;
     }
 
-    if (clubRole === "COACH") {
+    if (clubRole === "OWNER") {
       router.push(ROUTES.DASHBOARD.COACH);
-    } else if (clubRole === "ASSISTANT_COACH") {
+    } else if (clubRole === "COACH") {
       router.push(ROUTES.DASHBOARD.ASSISTANT);
     } else if (clubRole === "PLAYER") {
       router.push(ROUTES.DASHBOARD.PLAYER);

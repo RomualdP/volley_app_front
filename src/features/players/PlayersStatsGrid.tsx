@@ -13,7 +13,7 @@ export async function PlayersStatsGrid() {
   const players = await getMembersByRole("PLAYER");
   const coaches = clubMembers.filter(
     (member) =>
-      member.clubRole === "COACH" || member.clubRole === "ASSISTANT_COACH",
+      member.clubRole === "OWNER" || member.clubRole === "COACH",
   );
 
   return (

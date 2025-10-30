@@ -7,7 +7,7 @@
 /**
  * Invitation type
  */
-export type InvitationType = "ASSISTANT_COACH" | "PLAYER";
+export type InvitationType = "COACH" | "PLAYER";
 
 /**
  * Invitation detail - Matches InvitationDetailReadModel from backend
