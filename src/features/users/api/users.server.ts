@@ -73,7 +73,7 @@ export async function getClubUsersCount(): Promise<number> {
  * @deprecated Use getMembersByRole() from @/features/club-management/api/members.server instead
  */
 export async function getUsersByRole(
-  role: "COACH" | "ASSISTANT_COACH" | "PLAYER",
+  role: "OWNER" | "COACH" | "PLAYER",
 ): Promise<User[]> {
   const users = await getClubUsers();
   return users.filter((user) => user.clubRole === role);

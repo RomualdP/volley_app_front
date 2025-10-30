@@ -57,10 +57,10 @@ export function PlayerProfileCard({ user, level }: PlayerProfileCardProps) {
 
 function getRoleLabel(role?: string | null): string {
   switch (role) {
+    case "OWNER":
+      return "Propriétaire";
     case "COACH":
       return "Coach";
-    case "ASSISTANT_COACH":
-      return "Assistant";
     case "PLAYER":
       return "Joueur";
     default:

@@ -73,7 +73,7 @@ export interface SignupResponse {
     lastName: string;
     role: "USER" | "ADMIN";
     clubId: string | null;
-    clubRole: "COACH" | "ASSISTANT_COACH" | "PLAYER" | null;
+    clubRole: "OWNER" | "COACH" | "PLAYER" | null;
   };
 
   // Informations supplémentaires pour le coach
@@ -94,7 +94,7 @@ export interface InvitationValidation {
   isValid: boolean;
   clubName?: string;
   clubId?: string;
-  invitationType?: "PLAYER" | "ASSISTANT_COACH";
+  invitationType?: "PLAYER" | "COACH";
   expiresAt?: Date;
   error?: string;
 }

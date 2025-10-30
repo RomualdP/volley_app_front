@@ -52,9 +52,9 @@ export function PlayerCard({ player }: PlayerCardProps) {
 function getRoleBadge(role?: string | null): string {
   const baseClasses = "px-2 py-1 text-xs font-medium rounded-full";
   switch (role) {
-    case "COACH":
+    case "OWNER":
       return `${baseClasses} bg-orange-100 text-orange-800`;
-    case "ASSISTANT_COACH":
+    case "COACH":
       return `${baseClasses} bg-blue-100 text-blue-800`;
     case "PLAYER":
       return `${baseClasses} bg-green-100 text-green-800`;
@@ -68,10 +68,10 @@ function getRoleBadge(role?: string | null): string {
  */
 function getRoleLabel(role?: string | null): string {
   switch (role) {
+    case "OWNER":
+      return "Propriétaire";
     case "COACH":
       return "Coach";
-    case "ASSISTANT_COACH":
-      return "Assistant";
     case "PLAYER":
       return "Joueur";
     default:

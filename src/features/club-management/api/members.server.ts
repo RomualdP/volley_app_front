@@ -31,8 +31,8 @@ interface MemberListReadModel {
   canManageTeams: boolean;
   canInviteMembers: boolean;
   canManageSubscription: boolean;
+  isOwner: boolean;
   isCoach: boolean;
-  isAssistantCoach: boolean;
   isPlayer: boolean;
 }
 
@@ -71,7 +71,7 @@ export async function getClubMembers(): Promise<User[]> {
     avatar: member.userAvatar,
     role: "USER" as const,
     clubId: member.clubId,
-    clubRole: member.role as "COACH" | "ASSISTANT_COACH" | "PLAYER" | null,
+    clubRole: member.role as "OWNER" | "COACH" | "PLAYER" | null,
     isActive: member.isActive,
     createdAt: member.joinedAt,
     updatedAt: member.joinedAt,
@@ -83,7 +83,7 @@ export async function getClubMembers(): Promise<User[]> {
  * Get members filtered by club role
  */
 export async function getMembersByRole(
-  role: "COACH" | "ASSISTANT_COACH" | "PLAYER",
+  role: "OWNER" | "COACH" | "PLAYER",
 ): Promise<User[]> {
   const members = await getClubMembers();
   return members.filter((member) => member.clubRole === role);

@@ -102,10 +102,10 @@ export function useInvitation() {
    * Build full invitation URL
    */
   const buildInvitationUrl = useCallback(
-    (token: string, type: "ASSISTANT_COACH" | "PLAYER") => {
+    (token: string, type: "COACH" | "PLAYER") => {
       const baseUrl = window.location.origin;
       const path =
-        type === "ASSISTANT_COACH" ? "/signup/assistant" : "/signup/player";
+        type === "COACH" ? "/signup/coach" : "/signup/player";
       return `${baseUrl}${path}?invitation=${token}`;
     },
     [],

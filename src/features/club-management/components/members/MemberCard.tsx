@@ -23,14 +23,14 @@ export function MemberCard({
 }: MemberCardProps) {
   const getRoleBadge = () => {
     const roleColors = {
-      COACH: "bg-purple-100 text-purple-800",
-      ASSISTANT_COACH: "bg-blue-100 text-blue-800",
+      OWNER: "bg-purple-100 text-purple-800",
+      COACH: "bg-blue-100 text-blue-800",
       PLAYER: "bg-green-100 text-green-800",
     };
 
     const roleLabels = {
-      COACH: "Entraîneur",
-      ASSISTANT_COACH: "Assistant",
+      OWNER: "Propriétaire",
+      COACH: "Coach",
       PLAYER: "Joueur",
     };
 

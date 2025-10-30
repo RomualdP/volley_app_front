@@ -6,7 +6,7 @@ import { ClubDetailsSkeleton } from "@/features/club-management/components/ClubD
  * Club Page - Server Component
  *
  * Detailed club page with all information
- * Accessible to all club members (COACH, ASSISTANT_COACH, PLAYER)
+ * Accessible to all club members (OWNER, COACH, PLAYER)
  *
  * Pattern: Server Component + Suspense
  */

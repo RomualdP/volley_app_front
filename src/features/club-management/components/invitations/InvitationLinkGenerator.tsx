@@ -81,8 +81,8 @@ export function InvitationLinkGenerator({
                 label: "Joueur",
               },
               {
-                value: "ASSISTANT_COACH",
-                label: "Assistant Coach",
+                value: "COACH",
+                label: "Coach",
               },
             ]}
             disabled={isLoading}
@@ -90,7 +90,7 @@ export function InvitationLinkGenerator({
           <p className="mt-2 text-sm text-gray-500">
             {invitationType === "PLAYER"
               ? "Les joueurs pourront rejoindre vos équipes"
-              : "Les assistants pourront gérer les équipes avec vous"}
+              : "Les coaches pourront gérer les équipes avec vous"}
           </p>
         </div>
 

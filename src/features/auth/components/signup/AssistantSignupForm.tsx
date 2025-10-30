@@ -1,7 +1,7 @@
 /**
- * AssistantSignupForm Component (Smart)
+ * CoachSignupForm Component (Smart)
  *
- * Formulaire d'inscription pour un coach assistant via invitation
+ * Formulaire d'inscription pour un coach via invitation
  * - Validation du token d'invitation
  * - Affichage du nom du club
  * - Warning si changement de club

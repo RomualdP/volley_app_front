@@ -1,7 +1,7 @@
 /**
- * Page d'inscription Assistant Coach
+ * Page d'inscription Coach
  *
- * Formulaire d'inscription via invitation pour rejoindre un club en tant qu'assistant
+ * Formulaire d'inscription via invitation pour rejoindre un club en tant que coach
  */
 
 import Link from "next/link";
@@ -15,7 +15,7 @@ export default function SignupAssistantPage() {
       {/* Header */}
       <div className="text-center">
         <h1 className="text-3xl font-bold text-gray-900 font-heading">
-          Inscription Assistant Coach
+          Inscription Coach
         </h1>
         <p className="mt-2 text-sm text-gray-600">
           Rejoignez votre club via invitation

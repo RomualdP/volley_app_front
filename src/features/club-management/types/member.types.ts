@@ -7,7 +7,7 @@
 /**
  * Club role for members
  */
-export type ClubRole = "COACH" | "ASSISTANT_COACH" | "PLAYER";
+export type ClubRole = "OWNER" | "COACH" | "PLAYER";
 
 /**
  * Member detail - Matches MemberListReadModel from backend

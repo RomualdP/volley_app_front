@@ -23,7 +23,7 @@ interface RoleOption {
 
 const roleOptions: RoleOption[] = [
   {
-    title: "Coach",
+    title: "Propriétaire",
     description: "Créez votre club et gérez vos équipes",
     icon: "👨‍🏫",
     href: ROUTES.SIGNUP.COACH,
@@ -36,7 +36,7 @@ const roleOptions: RoleOption[] = [
     href: ROUTES.SIGNUP.PLAYER,
   },
   {
-    title: "Assistant Coach",
+    title: "Coach",
     description: "Aidez à gérer un club via une invitation",
     icon: "🤝",
     href: ROUTES.SIGNUP.ASSISTANT,
